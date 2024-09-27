@@ -26,8 +26,7 @@ const WalletConnect: React.FC<WalletConnectProps> = ({ walletAddress, setWalletA
         };
 
         try {
-            const ethereum = (window as never).ethereum;
-            await ethereum.request({
+            await window.ethereum.request({
                 method: 'wallet_addEthereumChain',
                 params: [scrollNetwork],
             });
@@ -40,8 +39,7 @@ const WalletConnect: React.FC<WalletConnectProps> = ({ walletAddress, setWalletA
     // Switch to Scroll Layer 2 network if it's not already active
     const switchToScrollL2 = async () => {
         try {
-            const ethereum = (window as never).ethereum;
-            await ethereum.request({
+            await window.ethereum.request({
                 method: 'wallet_switchEthereumChain',
                 params: [{ chainId: '0x82751' }],  // Scroll Layer 2 chain ID
             });
@@ -64,13 +62,12 @@ const WalletConnect: React.FC<WalletConnectProps> = ({ walletAddress, setWalletA
                 await switchToScrollL2();
 
                 // Create provider using MetaMask's injected provider
-                const ethersProvider = new BrowserProvider((window as never).ethereum);
+                const ethersProvider = new BrowserProvider(window.ethereum);
                 setProvider(ethersProvider);
 
-                // Request account access via ethers v6
-                const signer = await ethersProvider.getSigner();
-                const address = await signer.getAddress();
-                setWalletAddress(address);
+                // Request account access
+                const accounts = await ethersProvider.send('eth_requestAccounts', []);
+                setWalletAddress(accounts[0]);
             } catch (error) {
                 console.error('Failed to connect wallet:', error);
                 setError('Failed to connect wallet. Please try again.');
