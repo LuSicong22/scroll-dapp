@@ -50,7 +50,7 @@ const HomePage: React.FC = () => {
             </main>
 
             <footer className="py-8">
-                <p className="text-gray-500 text-center">© 2023 Scroll Simple Transfer DApp</p>
+                <p className="text-gray-500 text-center">© 2024 Scroll Simple Transfer DApp</p>
             </footer>
         </div>
     );
