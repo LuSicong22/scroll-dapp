@@ -47,8 +47,8 @@ const WalletConnect: React.FC<WalletConnectProps> = ({ walletAddress, setWalletA
                     params: [{chainId: '0x82751'}],  // Scroll Layer 2 chain ID
                 });
             }
-        } catch (error) {
-            if (error.code === 4902) {
+        } catch (error: unknown) {
+            if (isEthereumError(error) && error.code === 4902) {  // Use type guard
                 await addScrollNetwork();  // Network hasn't been added yet, so add it
             } else {
                 console.error('Failed to switch to Scroll network:', error);
@@ -56,6 +56,11 @@ const WalletConnect: React.FC<WalletConnectProps> = ({ walletAddress, setWalletA
             }
         }
     };
+
+    // Type guard function to check if the error is an EthereumError
+    function isEthereumError(error: unknown): error is { code: number } {
+        return typeof error === 'object' && error !== null && 'code' in error;
+    }
 
     const connectWallet = async () => {
         if (typeof window !== 'undefined' && window.ethereum) {  // Correctly check if ethereum exists
