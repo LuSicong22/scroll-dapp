@@ -47,7 +47,7 @@ const WalletConnect: React.FC<WalletConnectProps> = ({ walletAddress, setWalletA
                     params: [{chainId: '0x82751'}],  // Scroll Layer 2 chain ID
                 });
             }
-        } catch (error: never) {
+        } catch (error: unknown) {
             if (error.code === 4902) {
                 await addScrollNetwork();  // Network hasn't been added yet, so add it
             } else {
