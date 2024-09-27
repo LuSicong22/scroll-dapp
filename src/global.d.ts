@@ -2,6 +2,6 @@
 interface Window {
     ethereum?: {
         isMetaMask?: boolean;
-        request: (args: { method: string; params?: Array<any> }) => Promise<any>;
+        request: (args: { method: string; params: { chainId: string }[] }) => Promise<never>;
     };
 }

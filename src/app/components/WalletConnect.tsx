@@ -26,10 +26,12 @@ const WalletConnect: React.FC<WalletConnectProps> = ({ walletAddress, setWalletA
         };
 
         try {
-            await window.ethereum.request({
-                method: 'wallet_addEthereumChain',
-                params: [scrollNetwork],
-            });
+            if (window.ethereum) {
+                await window.ethereum.request({
+                    method: 'wallet_addEthereumChain',
+                    params: [scrollNetwork],
+                });
+            }
         } catch (error) {
             console.error('Failed to add Scroll network:', error);
             setError('Failed to add Scroll network. Please try again.');
@@ -39,10 +41,12 @@ const WalletConnect: React.FC<WalletConnectProps> = ({ walletAddress, setWalletA
     // Switch to Scroll Layer 2 network if it's not already active
     const switchToScrollL2 = async () => {
         try {
-            await window.ethereum.request({
-                method: 'wallet_switchEthereumChain',
-                params: [{ chainId: '0x82751' }],  // Scroll Layer 2 chain ID
-            });
+            if (window.ethereum) {
+                await window.ethereum.request({
+                    method: 'wallet_switchEthereumChain',
+                    params: [{chainId: '0x82751'}],  // Scroll Layer 2 chain ID
+                });
+            }
         } catch (error: never) {
             if (error.code === 4902) {
                 await addScrollNetwork();  // Network hasn't been added yet, so add it
