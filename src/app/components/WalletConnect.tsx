@@ -54,7 +54,7 @@ const WalletConnect: React.FC<WalletConnectProps> = ({ walletAddress, setWalletA
     };
 
     const connectWallet = async () => {
-        if (window.ethereum) {
+        if (typeof window !== 'undefined' && (window as never).ethereum) {
             setIsLoading(true);
             setError(null);  // Reset error message
             try {
