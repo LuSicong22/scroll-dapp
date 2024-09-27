@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b60fe02b-2f1e-40f4-aaf7-ab035558fd4d" name="Changes" comment="" />
+    <list default="true" id="b60fe02b-2f1e-40f4-aaf7-ab035558fd4d" name="Changes" comment="commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/EthBalance.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/EthBalance.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/TransferForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/TransferForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/WalletConnect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/WalletConnect.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/hooks/useWallet.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,10 +20,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2mdLKe1KqfTwCkVhgUu8lo1kFk4" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -24,7 +34,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "develop",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -32,10 +42,17 @@
     "nodejs_package_manager_path": "npm",
     "npm.dev.executor": "Run",
     "npm.start.executor": "Run",
+    "ts.external.directory.path": "/Users/lusicong/Learn/interviews/scroll_io/scroll-dapp/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/components" />
+      <recent name="$PROJECT_DIR$/src/app/hooks" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.dev">
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -58,8 +75,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.start" />
         <item itemvalue="npm.dev" />
+        <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
   </component>
@@ -79,10 +96,18 @@
       <option name="presentableId" value="Default" />
       <updated>1727401443767</updated>
       <workItem from="1727401445593" duration="392000" />
+      <workItem from="1727401923980" duration="29000" />
+      <workItem from="1727402134443" duration="182000" />
+      <workItem from="1727402321160" duration="97000" />
+      <workItem from="1727402445851" duration="1398000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit" />
   </component>
 </project>
