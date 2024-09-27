@@ -1,16 +1,26 @@
+// src/pages/api/history.ts
+
 import { NextApiRequest, NextApiResponse } from 'next';
 
-let transactionHistory: Array<{ recipient: string; amount: string; timestamp: string }> = [];
+// A mock database to store the transaction history in memory (this is just for the demo)
+const transactionHistory: Array<{
+    recipient: string;
+    amount: string;
+    timestamp: string;
+}> = [];
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'POST') {
-        const { recipient, amount } = req.body;
-        const timestamp = new Date().toISOString();
+        // Add a new transaction to the history
+        const { recipient, amount, timestamp } = req.body;
         transactionHistory.push({ recipient, amount, timestamp });
-        res.status(200).json({ message: 'Transaction recorded' });
+        return res.status(201).json({ message: 'Transaction recorded' });
     } else if (req.method === 'GET') {
-        res.status(200).json(transactionHistory);
+        // Return the transaction history
+        return res.status(200).json(transactionHistory);
     } else {
-        res.status(405).json({ message: 'Method not allowed' });
+        // Handle unsupported methods
+        res.setHeader('Allow', ['GET', 'POST']);
+        return res.status(405).json({ message: `Method ${req.method} not allowed` });
     }
 }

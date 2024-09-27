@@ -11,9 +11,13 @@ const TransactionHistory: React.FC = () => {
 
     useEffect(() => {
         const fetchHistory = async () => {
-            const response = await fetch('/api/history');
-            const data = await response.json();
-            setHistory(data);
+            try {
+                const response = await fetch('/api/history');
+                const data = await response.json();
+                setHistory(data);
+            } catch (error) {
+                console.error('Failed to fetch transaction history:', error);
+            }
         };
 
         fetchHistory();
@@ -22,13 +26,17 @@ const TransactionHistory: React.FC = () => {
     return (
         <div>
             <h2>Transaction History</h2>
-            <ul>
-                {history.map((tx, index) => (
-                    <li key={index}>
-                        {tx.amount} ETH sent to {tx.recipient} at {tx.timestamp}
-                    </li>
-                ))}
-            </ul>
+            {history.length > 0 ? (
+                <ul>
+                    {history.map((tx, index) => (
+                        <li key={index}>
+                            {tx.amount} ETH sent to {tx.recipient} on {new Date(tx.timestamp).toLocaleString()}
+                        </li>
+                    ))}
+                </ul>
+            ) : (
+                <p>No transactions found</p>
+            )}
         </div>
     );
 };

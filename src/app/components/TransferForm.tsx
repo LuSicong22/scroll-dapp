@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
-import { ethers } from 'ethers';
+import { BrowserProvider, parseEther, isAddress } from 'ethers';  // ethers.js v6
 
 interface Props {
     walletAddress: string | null;
+    provider: BrowserProvider | null;  // Accept provider as a prop
 }
 
-const TransferForm: React.FC<Props> = ({ walletAddress }) => {
+const TransferForm: React.FC<Props> = ({ walletAddress, provider }) => {
     const [recipient, setRecipient] = useState<string>('');
     const [amount, setAmount] = useState<string>('');
     const [message, setMessage] = useState<string>('');
 
     const sendTransaction = async () => {
-        if (!walletAddress) {
+        if (!walletAddress || !provider) {
             alert('Connect your wallet first');
             return;
         }
 
-        if (!ethers.utils.isAddress(recipient)) {
+        if (!isAddress(recipient)) {
             alert('Invalid recipient address');
             return;
         }
@@ -27,11 +28,10 @@ const TransferForm: React.FC<Props> = ({ walletAddress }) => {
         }
 
         try {
-            const provider = new ethers.BrowserProvider(window.ethereum);
-            const signer = provider.getSigner();
+            const signer = await provider.getSigner();
             const tx = await signer.sendTransaction({
                 to: recipient,
-                value: ethers.utils.parseEther(amount),
+                value: parseEther(amount),  // Use ethers v6 to parse amount to Wei
             });
 
             setMessage(`Transaction successful! Hash: ${tx.hash}`);
@@ -44,7 +44,6 @@ const TransferForm: React.FC<Props> = ({ walletAddress }) => {
 
     return (
         <div>
-            <div>Transfer Form:</div>
             <input
                 type="text"
                 placeholder="Recipient Address"

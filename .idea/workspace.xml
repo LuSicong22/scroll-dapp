@@ -4,16 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b60fe02b-2f1e-40f4-aaf7-ab035558fd4d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/api/transactions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/components/ETHBalance.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/components/TransactionHistory.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/components/TransferForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/components/WalletConnect.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/hooks/useWallet.tsx" afterDir="false" />
+    <list default="true" id="b60fe02b-2f1e-40f4-aaf7-ab035558fd4d" name="Changes" comment="commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/EthBalance.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/EthBalance.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/TransferForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/TransferForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/WalletConnect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/WalletConnect.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/hooks/useWallet.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,7 +34,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "develop",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -109,5 +105,9 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit" />
   </component>
 </project>
