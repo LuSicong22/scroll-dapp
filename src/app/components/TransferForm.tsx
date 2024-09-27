@@ -35,7 +35,23 @@ const TransferForm: React.FC<Props> = ({ walletAddress, provider }) => {
             });
 
             setMessage(`Transaction successful! Hash: ${tx.hash}`);
-            // Here you can make a POST request to save transaction history using the mock API
+
+            // Save transaction to mock API
+            const transactionData = {
+                recipient,
+                amount,
+                timestamp: new Date().toISOString(),  // Get the current timestamp
+            };
+
+            // Send transaction details to the mock API (POST request)
+            await fetch('/api/history', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(transactionData),
+            });
+
         } catch (error) {
             console.error('Transaction failed:', error);
             setMessage('Transaction failed');
@@ -44,6 +60,7 @@ const TransferForm: React.FC<Props> = ({ walletAddress, provider }) => {
 
     return (
         <div>
+            <div>Transfer Form:</div>
             <input
                 type="text"
                 placeholder="Recipient Address"

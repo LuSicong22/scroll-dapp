@@ -4,8 +4,8 @@ import React, { useState } from 'react';
 import WalletConnect from './components/WalletConnect';
 import EthBalance from './components/EthBalance';
 import TransferForm from './components/TransferForm';
-import TransactionHistory from './components/TransactionHistory';
-import { BrowserProvider } from 'ethers';
+import TransactionHistory from './components/TransactionHistory';  // Import TransactionHistory
+import { BrowserProvider } from 'ethers';  // ethers.js v6
 
 const HomePage: React.FC = () => {
     const [walletAddress, setWalletAddress] = useState<string | null>(null);
@@ -19,7 +19,7 @@ const HomePage: React.FC = () => {
 
             {walletAddress && provider && (
                 <>
-                    <EthBalance walletAddress={walletAddress}  provider={provider}/>
+                    <EthBalance walletAddress={walletAddress} provider={provider}/>
                     <TransferForm walletAddress={walletAddress} provider={provider}/>
                     <TransactionHistory />
                 </>
