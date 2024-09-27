@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
-import { BrowserProvider, parseEther, isAddress } from 'ethers';  // ethers.js v6
+import React, {useState} from 'react';
+import {BrowserProvider, parseEther, isAddress} from 'ethers';  // ethers.js v6
 
 interface Props {
-    walletAddress: string | null;
-    provider: BrowserProvider | null;
-    refreshHistory: () => void;  // Pass the refreshHistory callback function
+    walletAddress: string | null,
+    provider: BrowserProvider | null,
+    refreshHistory: () => void,
+    balance: string
 }
 
-const TransferForm: React.FC<Props> = ({ walletAddress, provider, refreshHistory }) => {
+const TransferForm: React.FC<Props> = ({walletAddress, provider, refreshHistory, balance}) => {
     const [recipient, setRecipient] = useState<string>('');
     const [amount, setAmount] = useState<string>('');
     const [message, setMessage] = useState<string>('');
@@ -23,7 +24,7 @@ const TransferForm: React.FC<Props> = ({ walletAddress, provider, refreshHistory
             return;
         }
 
-        if (!amount || isNaN(parseFloat(amount))) {
+        if (!amount || isNaN(parseFloat(amount)) || amount > balance) {
             alert('Invalid amount');
             return;
         }

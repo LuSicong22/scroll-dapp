@@ -13,6 +13,8 @@ const HomePage: React.FC = () => {
     const [walletAddress, setWalletAddress] = useState<string | null>(null);
     const [provider, setProvider] = useState<BrowserProvider | null>(null);  // Store the provider here
     const [refresh, setRefresh] = useState<boolean>(false);  // Add refresh state
+    const [balance, setBalance] = useState<string>('0');
+
 
     // Function to trigger history refresh
     const refreshHistory = () => {
@@ -27,8 +29,8 @@ const HomePage: React.FC = () => {
 
             {walletAddress && provider && (
                 <>
-                    <EthBalance walletAddress={walletAddress} provider={provider} />
-                    <TransferForm walletAddress={walletAddress} provider={provider} refreshHistory={refreshHistory} />
+                    <EthBalance walletAddress={walletAddress} provider={provider} balance={balance} setBalance={setBalance} />
+                    <TransferForm walletAddress={walletAddress} provider={provider} refreshHistory={refreshHistory} balance={balance}/>
                     <TransactionHistory refresh={refresh} />  {/* Pass refresh prop */}
                 </>
             )}
