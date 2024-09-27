@@ -3,10 +3,11 @@ import { BrowserProvider, parseEther, isAddress } from 'ethers';  // ethers.js v
 
 interface Props {
     walletAddress: string | null;
-    provider: BrowserProvider | null;  // Accept provider as a prop
+    provider: BrowserProvider | null;
+    refreshHistory: () => void;  // Pass the refreshHistory callback function
 }
 
-const TransferForm: React.FC<Props> = ({ walletAddress, provider }) => {
+const TransferForm: React.FC<Props> = ({ walletAddress, provider, refreshHistory }) => {
     const [recipient, setRecipient] = useState<string>('');
     const [amount, setAmount] = useState<string>('');
     const [message, setMessage] = useState<string>('');
@@ -51,6 +52,9 @@ const TransferForm: React.FC<Props> = ({ walletAddress, provider }) => {
                 },
                 body: JSON.stringify(transactionData),
             });
+
+            // Trigger history refresh after successful transaction
+            refreshHistory();
 
         } catch (error) {
             console.error('Transaction failed:', error);

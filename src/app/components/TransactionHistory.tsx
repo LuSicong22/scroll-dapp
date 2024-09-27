@@ -6,22 +6,34 @@ interface Transaction {
     timestamp: string;
 }
 
-const TransactionHistory: React.FC = () => {
+interface Props {
+    refresh: boolean;  // Prop to trigger history refresh
+}
+
+const TransactionHistory: React.FC<Props> = ({ refresh }) => {
     const [history, setHistory] = useState<Transaction[]>([]);
 
-    useEffect(() => {
-        const fetchHistory = async () => {
-            try {
-                const response = await fetch('/api/history');
-                const data = await response.json();
-                setHistory(data);
-            } catch (error) {
-                console.error('Failed to fetch transaction history:', error);
-            }
-        };
+    // Function to fetch transaction history from mock API
+    const fetchHistory = async () => {
+        try {
+            const response = await fetch('/api/history');
+            const data = await response.json();
+            setHistory(data);
+        } catch (error) {
+            console.error('Failed to fetch transaction history:', error);
+        }
+    };
 
-        fetchHistory();
+    useEffect(() => {
+        fetchHistory();  // Fetch transaction history on component mount
     }, []);
+
+    // Refresh transaction history when the refresh prop changes
+    useEffect(() => {
+        if (refresh) {
+            fetchHistory();
+        }
+    }, [refresh]);
 
     return (
         <div>
