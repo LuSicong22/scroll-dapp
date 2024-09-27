@@ -1,6 +1,4 @@
-// src/app/page.tsx
-
-'use client';  // Add this line to mark this as a Client Component
+'use client';
 
 import React, { useState } from 'react';
 import WalletConnect from './components/WalletConnect';
@@ -13,8 +11,8 @@ const HomePage: React.FC = () => {
 
     return (
         <div>
-            <h1>Scroll Simple Transfer DApp</h1>
-            <WalletConnect />
+            <h1>Simple Transfer DApp</h1>
+            <WalletConnect walletAddress={walletAddress} setWalletAddress={setWalletAddress} />
             {walletAddress && (
                 <>
                     <EthBalance walletAddress={walletAddress} />

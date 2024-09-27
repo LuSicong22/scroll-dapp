@@ -11,9 +11,9 @@ const EthBalance: React.FC<Props> = ({ walletAddress }) => {
     useEffect(() => {
         const fetchBalance = async () => {
             if (walletAddress) {
-                const provider = new ethers.providers.JsonRpcProvider('https://sepolia.infura.io/v3/YOUR_INFURA_PROJECT_ID');
+                const provider = new ethers.InfuraProvider("sepolia","6d86a81a991b42ecb8c6b4fce02ee43e");
                 const balance = await provider.getBalance(walletAddress);
-                setBalance(ethers.utils.formatEther(balance));
+                setBalance(ethers.formatEther(balance));
             }
         };
 
