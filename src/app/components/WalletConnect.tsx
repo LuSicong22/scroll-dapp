@@ -14,9 +14,9 @@ const WalletConnect: React.FC<WalletConnectProps> = ({ walletAddress, setWalletA
     // Prompt to add the Scroll network to MetaMask
     const addScrollNetwork = async () => {
         const scrollNetwork = {
-            chainId: '0x8274f',  // Scroll Layer 2 chain ID
-            chainName: 'Scroll Sepolia Testnet',
-            rpcUrls: ['https://sepolia-rpc.scroll.io'],  // Scroll Layer 2 RPC URL
+            chainId: '0x82750',  // Scroll Layer 2 chain ID
+            chainName: 'Scroll Layer 2',
+            rpcUrls: ['https://rpc.scroll.io'],  // Scroll Layer 2 RPC URL
             nativeCurrency: {
                 name: 'ETH',
                 symbol: 'ETH',
