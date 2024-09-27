@@ -83,7 +83,7 @@ const TransferForm: React.FC<Props> = ({ walletAddress, provider, refreshHistory
     };
 
     return (
-        <div className="max-w-lg mx-auto p-6 bg-white rounded-md space-y-4">
+        <div className="max-w-lg mx-auto p-6 bg-white shadow-md rounded-md space-y-4">
             <h2 className="text-xl font-bold text-gray-800">Transfer ETH</h2>
             <p className="text-sm text-gray-600">Available Balance: {balance} ETH</p>
 
