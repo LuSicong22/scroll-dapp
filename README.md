@@ -20,6 +20,30 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Design decisions & features
+
+### MetaMask Integration
+This app uses MetaMask as the primary wallet provider. Users can connect, switch networks, and interact with the Ethereum blockchain through MetaMask. The app auto-prompts users to add and switch to the Scroll Layer 2 network if necessary.
+
+### Network Switching & Custom Networks
+To support Layer 2 scaling solutions like Scroll, the app prompts users to switch to the Scroll Layer 2 network. If they don't have it in their MetaMask, they will be asked to add the network, improving the user experience and reducing friction.
+
+### Loading and Error Handling
+- A loading spinner is shown while the wallet is being connected or the network is being switched.
+- Clear error messages are displayed to inform the user of any issues that occur during wallet connection or network switching.
+
+### State Management
+The component uses React's `useState` to handle wallet address, provider, and error states. This ensures that the UI is always up-to-date with the user's connection status.
+
+### Ethers.js v6
+This app uses `ethers.js v6` for interacting with Ethereum. The library abstracts the complexity of blockchain interactions, allowing for a smooth integration with MetaMask and supporting features such as account signing and network switching.
+
+### Wallet Disconnect Feature
+The component provides a simple method for users to disconnect their wallet, which clears the wallet address and provider from the app's state, ensuring privacy.
+
+### Security
+No user-sensitive information is stored in local storage. All sensitive data is handled in React's local state, and the session is cleared upon disconnect.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
