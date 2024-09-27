@@ -26,7 +26,8 @@ const WalletConnect: React.FC<WalletConnectProps> = ({ walletAddress, setWalletA
         };
 
         try {
-            await window.ethereum.request({
+            const ethereum = (window as never).ethereum;
+            await ethereum.request({
                 method: 'wallet_addEthereumChain',
                 params: [scrollNetwork],
             });
@@ -39,7 +40,8 @@ const WalletConnect: React.FC<WalletConnectProps> = ({ walletAddress, setWalletA
     // Switch to Scroll Layer 2 network if it's not already active
     const switchToScrollL2 = async () => {
         try {
-            await window.ethereum.request({
+            const ethereum = (window as never).ethereum;
+            await ethereum.request({
                 method: 'wallet_switchEthereumChain',
                 params: [{ chainId: '0x82751' }],  // Scroll Layer 2 chain ID
             });
@@ -54,7 +56,7 @@ const WalletConnect: React.FC<WalletConnectProps> = ({ walletAddress, setWalletA
     };
 
     const connectWallet = async () => {
-        if (window.ethereum) {
+        if (typeof window !== 'undefined' && (window as never).ethereum) {
             setIsLoading(true);
             setError(null);  // Reset error message
             try {
@@ -62,12 +64,13 @@ const WalletConnect: React.FC<WalletConnectProps> = ({ walletAddress, setWalletA
                 await switchToScrollL2();
 
                 // Create provider using MetaMask's injected provider
-                const ethersProvider = new BrowserProvider(window.ethereum);
+                const ethersProvider = new BrowserProvider((window as never).ethereum);
                 setProvider(ethersProvider);
 
-                // Request account access
-                const accounts = await ethersProvider.send('eth_requestAccounts', []);
-                setWalletAddress(accounts[0]);
+                // Request account access via ethers v6
+                const signer = await ethersProvider.getSigner();
+                const address = await signer.getAddress();
+                setWalletAddress(address);
             } catch (error) {
                 console.error('Failed to connect wallet:', error);
                 setError('Failed to connect wallet. Please try again.');
